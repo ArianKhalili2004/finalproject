@@ -26,7 +26,7 @@ void check_andaze_javab(int);
 void overflow_ADD(int, int, int);
 void overflow_SUB(int, int, int);
 FILE *stream;
-char input[5],output[5],d_r[8],d_r_f[11],input_r[5],output_r[5],d_r_r[8],d_r_f_r[10];
+char exit_asli[3],input[4],output[5],d_r[8],d_r_f[11],input_r[4],output_r[5],d_r_r[8],d_r_f_r[10],exit_r[3];
 int main()
 {
     int count = 0, count_1 = 0, x, y, z;
@@ -45,8 +45,16 @@ int v=0;
         //     printf("%s",dastorat);
         
         // }
+        if (dastorat[0]=='E'&&dastorat[3]=='T')
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                exit_asli[i] = dastorat[i];
+            }
+            
+        }
         
-        if (dastorat[0]=='O'&&dastorat[5] =='T')
+        else if (dastorat[0]=='O'&&dastorat[5] =='T')
         {
             for (int i = 0; i < 6; i++)
             {
@@ -54,9 +62,9 @@ int v=0;
             }
             
         }
-        else if (dastorat[0]=='I'&&dastorat[5] =='T')
+        else if (dastorat[0]=='I'&&dastorat[4] =='T')
         {
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 5; i++)
             {
                 input[i] = dastorat[i];
             }
@@ -206,7 +214,7 @@ int v=0;
         // printf("input");
         INPUT();
          
-        for (int w = 0; w < 6; w++)
+        for (int w = 0; w < 5; w++)
             {
                 input[w] = input_r[w];
             }
@@ -231,9 +239,13 @@ int v=0;
             JMP(x);
             return 0;
         }
-        else if (strcmp(har_khat, "EXIT") == 0)
+        else if (strcmp(exit_asli, "EXIT") == 0)
         { 
-
+            for (int i = 0; i < 4; i++)
+            {
+                exit_asli[i] = exit_r[i];
+            }
+            
             break;
         }
         else
@@ -406,12 +418,18 @@ void JMP(int line)
     // printf("%s",dastorat);
     while (EOF != fscanf(jump, "%[^\n]\n", dastorat))
     {  
-        
-        d++;
+         d++;
         if (d > line)
         {
+            if (dastorat[0]=='E'&&dastorat[3]=='T')
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                exit_asli[i] = dastorat[i];
+            }
             
-  if (dastorat[0]=='O'&&dastorat[5] =='T')
+        }        
+    else if (dastorat[0]=='O'&&dastorat[5] =='T')
         {
             for (int i = 0; i < 6; i++)
             {
@@ -566,12 +584,12 @@ void JMP(int line)
             
             
         }
-        else if (strcmp(input, "INPUT") == 0)
+        else if (strcmp(input,"INPUT") == 0)
         {
         // printf("input");
         INPUT();
          
-        for (int w = 0; w < 6; w++)
+        for (int w = 0; w < 5; w++)
             {
                 input[w] = input_r[w];
             }
@@ -588,9 +606,19 @@ void JMP(int line)
             
             
         }
+        else if (strcmp(har_khat, "JMP") == 0)
+        {
 
-        else if (strcmp(har_khat, "EXIT") == 0)
-        { 
+            printf("you ran into an unlimited loop pls try agian");
+            return ;
+        }
+        else if (strcmp(exit_asli, "EXIT") == 0)
+        {  
+            for (int i = 0; i < 4; i++)
+            {
+                exit_asli[i] = exit_r[i];
+            }
+            
 
             break;
         }
