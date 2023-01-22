@@ -3,4 +3,4 @@
 # Programmer:Arian Khalili 
 # master of the subject:Dr.Behrooz Nasihatkoon
 # Head TA:Mr.Sarebani
-# TA : Mr.Ebrahim Sheikh
+# TA : Mr.Ebrahim.Sheikh
