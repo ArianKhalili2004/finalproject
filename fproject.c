@@ -4,7 +4,7 @@
 #include <ctype.h>
 int i = 0, main_array[32], count_2 = -1;
 char dastorat[100], har_khat[100], meghdar_sabet[8],dastorat_2[100];
-// void HELP();
+void HELP();
 void ADD(int, int, int);
 void SUB(int, int, int);
 void ADDI(int, int, int);
@@ -27,7 +27,8 @@ void check_andaze_javab(int);
 void overflow_ADD(int, int, int);
 void overflow_SUB(int, int, int);
 FILE *stream;
-char exit_asli[3],input[4],output[5],d_r[8],d_r_f[11],input_r[4],output_r[5],d_r_r[8],d_r_f_r[10],exit_r[3];
+char exit_asli[3],input[4],help[3],output[5],d_r[8],d_r_f[11],input_r[4],output_r[5],d_r_r[8],
+d_r_f_r[10],exit_r[3],help_r[3];
 
 int main()
 {
@@ -96,6 +97,14 @@ int v=0;
             for (int i = 0; i < 9; i++)
             {
                 d_r[i] = dastorat[i];
+            }
+            
+        }
+        else if (dastorat[0]=='H'&&dastorat[3] =='P')
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                help[i] = dastorat[i];
             }
             
         }
@@ -195,6 +204,17 @@ int v=0;
 
             sscanf(dastorat, "SWP S%d, S%d", &x, &y);
             SWP(x, y);
+        }
+        else if (strcmp(help, "HELP") == 0)
+        {
+            
+            HELP();
+            for (int w = 0; w < 4; w++)
+            {
+                
+                help[w] = help_r[w];
+            }
+            
         }
         else if (strcmp(d_r, "DUMP_REGS") == 0)
         {
@@ -751,4 +771,24 @@ void overflow_SUB(int x, int y, int z)
     {
         meghdar_sabet[5] = 0;
     }
+}
+void HELP(){
+printf("Add : jamm kardan 2 adadi ke type shode ast ke an 2 addad ra dar araye asli mizarim va jamm mikonim\nva rikhtan on dar araye asli entekhabi\n");
+printf("Sub :  kamm kardan 2 adadi ke type shode ast ke an 2 addad ra dar araye asli mizarim va kamm mikonim\nva rikhtan on dar araye asli entekhabi\n");
+printf("Addi : jamm kardan 2 adadi ke type shode ast va rikhtan on dar araye asli entekhabi\n");
+printf("Subi : jamm kardan 2 adadi ke type shode ast va rikhtan on dar araye asli entekhabi\n");
+printf("Mov :  meghdar dehi ba addad ya yek ozv araye asli va rikhtan on dar araye asli entekhabi\n");
+printf("And : tabdil kardan 2 addad dade shode va peida kardan on location dar array asli va be tabdil bite kardan\nanha va check kardan T or F on va rikhtan on dar araye asli entekhabi\n");
+printf("Or : tabdil kardan 2 addad dade shode va peida kardan on location dar array asli va be tabdil bite kardan\nanha va check kardan T or F on va rikhtan on dar araye asli entekhabi\n");
+printf("Xor : tabdil kardan 2 addad dade shode va peida kardan on location dar array asli va be tabdil bite kardan\nanha va check kardan T or F on va rikhtan on dar araye asli entekhabi\n");
+printf("Andi : tabdil kardan 2 addad dade shode va bite kardan anha va check kardan T or F \n on va rikhtan on dar araye asli entekhabi\n");
+printf("Xori:  tabdil kardan 2 addad dade shode va bite kardan anha va check kardan T or F \n on va rikhtan on dar araye asli entekhabi\n");
+printf("Ori :  tabdil kardan 2 addad dade shode va bite kardan anha va check kardan T or F \n on va rikhtan on dar araye asli entekhabi\n");
+printf("DUMP_REGS : print kardan array asli va aray vaziat dar terminal\n");
+printf("DUMP_REGS_F : print kardan array asli va array vaziat dar file \n");
+printf("INPUT : geraftan dasti array asli ozv aval dar terminal\n");
+printf("OUTPUT : print kardan array asli ozv aval dar terminal\n");
+printf("SWP : peyda kardan 2 addad asli va location anha dar array asli va avaz kardan meghdar anha baham\n");
+printf("JMP : paridan be khat mored nazar va shoro kardan az on khat\n");
+printf("EXIT : kharaj shodan az dastorha va exit shodan az terminal\n");
 }
