@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
+#include <ctype.h>
 int i = 0, main_array[32], count_2 = -1;
 char dastorat[100], har_khat[100], meghdar_sabet[8],dastorat_2[100];
+// void HELP();
 void ADD(int, int, int);
 void SUB(int, int, int);
 void ADDI(int, int, int);
@@ -27,15 +28,20 @@ void overflow_ADD(int, int, int);
 void overflow_SUB(int, int, int);
 FILE *stream;
 char exit_asli[3],input[4],output[5],d_r[8],d_r_f[11],input_r[4],output_r[5],d_r_r[8],d_r_f_r[10],exit_r[3];
+
 int main()
 {
-    int count = 0, count_1 = 0, x, y, z;
+
+// char file_name[100];
+// scanf("%d",file_name);
+int count = 0, count_1 = 0, x, y, z;
 
 //     for (int i = 0; i < 100; i++)
 // {
 //     dastorat_2[i] = ' ';
 // }
 int v=0;
+    // scanf("%s",file_name);
     FILE *stream = fopen("database.txt", "r");
     while (EOF != fscanf(stream, "%[^\n]\n", dastorat))
     {v++;
@@ -45,6 +51,11 @@ int v=0;
         //     printf("%s",dastorat);
         
         // }
+        for (int i = 0; i < 100; i++)
+        {
+            dastorat[i] = toupper(dastorat[i]);
+        }
+        
         if (dastorat[0]=='E'&&dastorat[3]=='T')
         {
             for (int i = 0; i < 4; i++)
@@ -250,7 +261,7 @@ int v=0;
         }
         else
         {
-            printf("%s is not recognized as an internal or external command,operable program or batch file."
+            printf("\n%s is not recognized as an internal or external command,operable program or batch file."
             , har_khat);
         }
         for (int i = 0; i < 100; i++)
@@ -609,7 +620,7 @@ void JMP(int line)
         else if (strcmp(har_khat, "JMP") == 0)
         {
 
-            printf("you ran into an unlimited loop pls try agian");
+            printf("\nyou ran into an unlimited loop pls try agian");
             return ;
         }
         else if (strcmp(exit_asli, "EXIT") == 0)
@@ -624,7 +635,7 @@ void JMP(int line)
         }
         else
         {
-            printf("%s is not recognized as an internal or external command,operable program or batch file."
+            printf("\n%s is not recognized as an internal or external command,operable program or batch file."
             , har_khat);
         }
         for (int i = 0; i < 100; i++)
