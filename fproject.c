@@ -26,6 +26,7 @@ void check_binary_addad(int);
 void check_andaze_javab(int);
 void overflow_ADD(int, int, int);
 void overflow_SUB(int, int, int);
+void DIV(int ,int);
 FILE *stream;
 char exit_asli[3],input[4],help[3],output[5],d_r[8],d_r_f[11],input_r[4],output_r[5],d_r_r[8],
 d_r_f_r[10],exit_r[3],help_r[3];
@@ -279,6 +280,12 @@ int v=0;
             
             break;
         }
+        else if (strcmp(har_khat, "DIV") == 0)
+        {
+
+            sscanf(dastorat, "DIV S%d, S%d", &x, &y);
+            DIV(x, y);
+        }
         else
         {
             printf("\n%s is not recognized as an internal or external command,operable program or batch file."
@@ -494,6 +501,14 @@ void JMP(int line)
             }
             
         }
+        else if (dastorat[0]=='H'&&dastorat[3] =='P')
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                help[i] = dastorat[i];
+            }
+            
+        }
         for (i = 0; dastorat[i] != ' '; i++)
         {
             har_khat[i] = dastorat[i];
@@ -625,6 +640,17 @@ void JMP(int line)
                 input[w] = input_r[w];
             }
         }
+        else if (strcmp(help, "HELP") == 0)
+        {
+            
+            HELP();
+            for (int w = 0; w < 4; w++)
+            {
+                
+                help[w] = help_r[w];
+            }
+            
+        }
         else if (strcmp(output, "OUTPUT") == 0)
         {
             // printf("output");
@@ -653,6 +679,12 @@ void JMP(int line)
 
             break;
         }
+        else if (strcmp(har_khat, "DIV") == 0)
+        {
+
+            sscanf(dastorat, "DIV S%d, S%d", &x, &y);
+            DIV(x, y);
+        }
         else
         {
             printf("\n%s is not recognized as an internal or external command,operable program or batch file."
@@ -670,6 +702,36 @@ void JMP(int line)
 
 }
 
+void HELP(){
+printf("Add : jamm kardan 2 adadi ke type shode ast ke an 2 addad ra dar araye asli mizarim va jamm mikonim\nva rikhtan on dar araye asli entekhabi\n");
+printf("Sub :  kamm kardan 2 adadi ke type shode ast ke an 2 addad ra dar araye asli mizarim va kamm mikonim\nva rikhtan on dar araye asli entekhabi\n");
+printf("Addi : jamm kardan 2 adadi ke type shode ast va rikhtan on dar araye asli entekhabi\n");
+printf("Subi : jamm kardan 2 adadi ke type shode ast va rikhtan on dar araye asli entekhabi\n");
+printf("Mov :  meghdar dehi ba addad ya yek ozv araye asli va rikhtan on dar araye asli entekhabi\n");
+printf("And : tabdil kardan 2 addad dade shode va peida kardan on location dar array asli va be tabdil bite kardan\nanha va check kardan T or F on va rikhtan on dar araye asli entekhabi\n");
+printf("Or : tabdil kardan 2 addad dade shode va peida kardan on location dar array asli va be tabdil bite kardan\nanha va check kardan T or F on va rikhtan on dar araye asli entekhabi\n");
+printf("Xor : tabdil kardan 2 addad dade shode va peida kardan on location dar array asli va be tabdil bite kardan\nanha va check kardan T or F on va rikhtan on dar araye asli entekhabi\n");
+printf("Andi : tabdil kardan 2 addad dade shode va bite kardan anha va check kardan T or F \n on va rikhtan on dar araye asli entekhabi\n");
+printf("Xori:  tabdil kardan 2 addad dade shode va bite kardan anha va check kardan T or F \n on va rikhtan on dar araye asli entekhabi\n");
+printf("Ori :  tabdil kardan 2 addad dade shode va bite kardan anha va check kardan T or F \n on va rikhtan on dar araye asli entekhabi\n");
+printf("DUMP_REGS : print kardan array asli va aray vaziat dar terminal\n");
+printf("DUMP_REGS_F : print kardan array asli va array vaziat dar file \n");
+printf("INPUT : geraftan dasti array asli ozv aval dar terminal\n");
+printf("OUTPUT : print kardan array asli ozv aval dar terminal\n");
+printf("SWP : peyda kardan 2 addad asli va location anha dar array asli va avaz kardan meghdar anha baham\n");
+printf("JMP : paridan be khat mored nazar va shoro kardan az on khat\n");
+printf("EXIT : kharaj shodan az dastorha va exit shodan az terminal\n");
+}
+void DIV(int x,int y){
+main_array[x] =main_array[x]/main_array[y];
+main_array[y] = main_array[x]%main_array[y];
+// check_binary_addad()
+// printf("%d %d",main_array[x],main_array[y]);
+check_binary_addad(main_array[x]);
+check_andaze_javab(main_array[x]);
+check_binary_addad(main_array[y]);
+check_andaze_javab(main_array[y]);
+}
 void check_binary_addad(int num)
 {
     int count = 0;
@@ -771,24 +833,4 @@ void overflow_SUB(int x, int y, int z)
     {
         meghdar_sabet[5] = 0;
     }
-}
-void HELP(){
-printf("Add : jamm kardan 2 adadi ke type shode ast ke an 2 addad ra dar araye asli mizarim va jamm mikonim\nva rikhtan on dar araye asli entekhabi\n");
-printf("Sub :  kamm kardan 2 adadi ke type shode ast ke an 2 addad ra dar araye asli mizarim va kamm mikonim\nva rikhtan on dar araye asli entekhabi\n");
-printf("Addi : jamm kardan 2 adadi ke type shode ast va rikhtan on dar araye asli entekhabi\n");
-printf("Subi : jamm kardan 2 adadi ke type shode ast va rikhtan on dar araye asli entekhabi\n");
-printf("Mov :  meghdar dehi ba addad ya yek ozv araye asli va rikhtan on dar araye asli entekhabi\n");
-printf("And : tabdil kardan 2 addad dade shode va peida kardan on location dar array asli va be tabdil bite kardan\nanha va check kardan T or F on va rikhtan on dar araye asli entekhabi\n");
-printf("Or : tabdil kardan 2 addad dade shode va peida kardan on location dar array asli va be tabdil bite kardan\nanha va check kardan T or F on va rikhtan on dar araye asli entekhabi\n");
-printf("Xor : tabdil kardan 2 addad dade shode va peida kardan on location dar array asli va be tabdil bite kardan\nanha va check kardan T or F on va rikhtan on dar araye asli entekhabi\n");
-printf("Andi : tabdil kardan 2 addad dade shode va bite kardan anha va check kardan T or F \n on va rikhtan on dar araye asli entekhabi\n");
-printf("Xori:  tabdil kardan 2 addad dade shode va bite kardan anha va check kardan T or F \n on va rikhtan on dar araye asli entekhabi\n");
-printf("Ori :  tabdil kardan 2 addad dade shode va bite kardan anha va check kardan T or F \n on va rikhtan on dar araye asli entekhabi\n");
-printf("DUMP_REGS : print kardan array asli va aray vaziat dar terminal\n");
-printf("DUMP_REGS_F : print kardan array asli va array vaziat dar file \n");
-printf("INPUT : geraftan dasti array asli ozv aval dar terminal\n");
-printf("OUTPUT : print kardan array asli ozv aval dar terminal\n");
-printf("SWP : peyda kardan 2 addad asli va location anha dar array asli va avaz kardan meghdar anha baham\n");
-printf("JMP : paridan be khat mored nazar va shoro kardan az on khat\n");
-printf("EXIT : kharaj shodan az dastorha va exit shodan az terminal\n");
 }
