@@ -18,7 +18,7 @@ void OUTPUT();
 void AND(int, int, int);
 void XOR(int, int, int);
 void OR(int, int, int);
-void JMP(int);
+void JMP(int,char []);
 void ANDI(int, int, int);
 void ORI(int, int, int);
 void XORI(int, int, int);
@@ -34,7 +34,12 @@ d_r_f_r[10],exit_r[3],help_r[3];
 int main()
 {
 
-// char file_name[100];
+char file_name[100];
+for (int i = 0; i < 100; i++)
+{
+    file_name[i] = ' ';
+}
+
 // scanf("%d",file_name);
 int count = 0, count_1 = 0, x, y, z;
 
@@ -43,8 +48,8 @@ int count = 0, count_1 = 0, x, y, z;
 //     dastorat_2[i] = ' ';
 // }
 int v=0;
-    // scanf("%s",file_name);
-    FILE *stream = fopen("database.txt", "r");
+    scanf("%s",file_name);
+    FILE *stream = fopen(file_name, "r");
     while (EOF != fscanf(stream, "%[^\n]\n", dastorat))
     {v++;
         
@@ -267,8 +272,8 @@ int v=0;
         {
 
             sscanf(dastorat, "JMP %d", &x);
-            fclose(stream);
-            JMP(x);
+            
+            JMP(x,file_name);
             return 0;
         }
         else if (strcmp(exit_asli, "EXIT") == 0)
@@ -447,11 +452,11 @@ void ORI(int x, int y, int z)
     check_andaze_javab(main_array[x]);
 }
 
-void JMP(int line)
+void JMP(int line,char file[100])
 { 
     int d = 0, x, y, z, count_1 = 0, count = 0;
     FILE *jump;
-    jump = fopen("database.txt", "r");
+    jump = fopen(file, "r");
     // fscanf(jump, "%[^\n]\n", dastorat);
     // printf("%s",dastorat);
     while (EOF != fscanf(jump, "%[^\n]\n", dastorat))
