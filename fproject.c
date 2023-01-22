@@ -617,7 +617,7 @@ void JMP(int line)
         }
         else if (strcmp(input,"INPUT") == 0)
         {
-        // printf("input");
+        
         INPUT();
          
         for (int w = 0; w < 5; w++)
