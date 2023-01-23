@@ -48,17 +48,33 @@ int count = 0, count_1 = 0, x, y, z;
 // {
 //     dastorat_2[i] = ' ';
 // }
-int v=0;
+int counting_slash=0;
+int makan_slash;
     scanf("%s",file_name);
     FILE *stream = fopen(file_name, "r");
     while (EOF != fscanf(stream, "%[^\n]\n", dastorat))
-    {v++;
+    {
         
-        // if (v==8)
-        // {
-        //     printf("%s",dastorat);
+        for (int i = 0; i < 100; i++)
+        {
+            if (dastorat[i]=='/'&&dastorat[i+1]=='/')
+            {
+                makan_slash = i;
+                counting_slash++;
+                break;
+            }
+        }
+
+        if (counting_slash==1)
+        {
+        for (int i = 100; i >= makan_slash; i--)
+        {
+            dastorat[i] = dastorat_2[i];
+        }
         
-        // }
+        counting_slash=0;
+        }
+        
         for (int i = 0; i < 100; i++)
         {
             dastorat[i] = toupper(dastorat[i]);
@@ -206,7 +222,7 @@ int v=0;
             
         }
 
-        else if (strcmp(har_khat,"DUMP_REGS_F ") == 0)
+        else if (strcmp(har_khat,"DUMP_REGS_F") == 0)
         {   
             // printf("dump_regs_f");
 
@@ -436,6 +452,7 @@ void JMP(int line,char file[100])
     jump = fopen(file, "r");
     // fscanf(jump, "%[^\n]\n", dastorat);
     // printf("%s",dastorat);
+    int makan_slash,counting_slash=0;
     while (EOF != fscanf(jump, "%[^\n]\n", dastorat))
     {  
          d++;
@@ -445,7 +462,24 @@ void JMP(int line,char file[100])
         {
             dastorat[i] = toupper(dastorat[i]);
         }
+        for (int i = 0; i < 100; i++)
+        {
+            if (dastorat[i]=='/'&&dastorat[i+1]=='/')
+            {
+                makan_slash = i;
+                counting_slash++;
+                break;
+            }
+        }
+                if (counting_slash==1)
+        {
+        for (int i = 100; i >= makan_slash; i--)
+        {
+            dastorat[i] = dastorat_2[i];
+        }
         
+        counting_slash=0;
+        }
         if (dastorat[0]=='E'&&dastorat[3]=='T')
         {
             dastorat[4] = ' ';
@@ -581,7 +615,7 @@ void JMP(int line,char file[100])
             
         }
 
-        else if (strcmp(har_khat,"DUMP_REGS_F ") == 0)
+        else if (strcmp(har_khat,"DUMP_REGS_F") == 0)
         {   
             // printf("dump_regs_f");
 
@@ -688,6 +722,8 @@ printf("SWP : peyda kardan 2 addad asli va location anha dar array asli va avaz 
 printf("JMP : paridan be khat mored nazar va shoro kardan az on khat\n");
 printf("DIV : taghsim krdan addad dovomi bar avali va rikhtan baghimande on dar addad dovomi \nva kharej ghesmat dar addad aval \n");
 printf("MULL : zarb kardan 2 addad dar ham va kam kardan 4 byte az javab va rikhtan on dar yeki va 4 byte\n ezafe kardan va rikhtan on dar addad avali\n");
+printf("PUSH: Add the number you give the terminal to memory in stack\n");
+printf("POP: Remove the number  from stack and memory and add to array asli\n");
 printf("EXIT : kharaj shodan az dastorha va exit shodan az terminal\n");
 }
 void DIV(int x,int y){
@@ -836,6 +872,4 @@ if (makan_stack>0)
 else{
     printf("\nan error has occurred :\n the memory in empty please push some information first");
 }
-
-
 }
