@@ -27,6 +27,7 @@ void check_andaze_javab(int);
 void overflow_ADD(int, int, int);
 void overflow_SUB(int, int, int);
 void DIV(int ,int);
+void MULL(int,int);
 FILE *stream;
 char exit_asli[3],input[4],help[3],output[5],d_r[8],d_r_f[11],input_r[4],output_r[5],d_r_r[8],
 d_r_f_r[10],exit_r[3],help_r[3];
@@ -265,9 +266,13 @@ int v=0;
                 output[w] = output_r[w];
             }
             
-            
-            
-        }
+            }
+        else if (strcmp(har_khat, "MULL") == 0)
+        {
+
+            sscanf(dastorat, "MULL S%d, S%d", &x, &y);
+            MULL(x, y);
+        } 
         else if (strcmp(har_khat, "JMP") == 0)
         {
 
@@ -668,6 +673,12 @@ void JMP(int line,char file[100])
             
             
         }
+        else if (strcmp(har_khat, "MULL") == 0)
+        {
+
+            sscanf(dastorat, "MULL S%d, S%d", &x, &y);
+            MULL(x, y);
+        }
         else if (strcmp(har_khat, "JMP") == 0)
         {
 
@@ -725,6 +736,8 @@ printf("INPUT : geraftan dasti array asli ozv aval dar terminal\n");
 printf("OUTPUT : print kardan array asli ozv aval dar terminal\n");
 printf("SWP : peyda kardan 2 addad asli va location anha dar array asli va avaz kardan meghdar anha baham\n");
 printf("JMP : paridan be khat mored nazar va shoro kardan az on khat\n");
+printf("DIV : taghsim krdan addad dovomi bar avali va rikhtan baghimande on dar addad dovomi \nva kharej ghesmat dar addad aval \n");
+printf("MULL : zarb kardan 2 addad dar ham va kam kardan 4 byte az javab va rikhtan on dar yeki va 4 byte\n ezafe kardan va rikhtan on dar addad avali\n");
 printf("EXIT : kharaj shodan az dastorha va exit shodan az terminal\n");
 }
 void DIV(int x,int y){
@@ -736,6 +749,19 @@ check_binary_addad(main_array[x]);
 check_andaze_javab(main_array[x]);
 check_binary_addad(main_array[y]);
 check_andaze_javab(main_array[y]);
+}
+void MULL(int x,int y){
+int c = main_array[x]*main_array[y];  
+main_array[x] = c + 4;
+main_array[y] = c - 4;
+if (main_array[y]<0)
+{
+    main_array[y]+=255;
+}
+if (main_array[x]>255)
+{
+    main_array[x] -= 255;
+}
 }
 void check_binary_addad(int num)
 {
