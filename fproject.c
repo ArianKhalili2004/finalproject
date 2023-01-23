@@ -2,14 +2,16 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
-int i = 0, main_array[32], count_2 = -1;
+int i = 0, main_array[32], count_2 = -1,makan_stack=0;
 char dastorat[100], har_khat[100], meghdar_sabet[8],dastorat_2[100];
+int stack[4];
 void HELP();
 void ADD(int, int, int);
 void SUB(int, int, int);
 void ADDI(int, int, int);
 void SUBI(int, int, int);
 void MOV(int, int, int);
+void MULL(int ,int);
 void DUMP_REGS();
 void DUMP_REGS_F();
 void SWP(int, int);
@@ -27,11 +29,9 @@ void check_andaze_javab(int);
 void overflow_ADD(int, int, int);
 void overflow_SUB(int, int, int);
 void DIV(int ,int);
-void MULL(int,int);
+void POP(int);
+void PUSH(int);
 FILE *stream;
-char exit_asli[3],input[4],help[3],output[5],d_r[8],d_r_f[11],input_r[4],output_r[5],d_r_r[8],
-d_r_f_r[10],exit_r[3],help_r[3];
-
 int main()
 {
 
@@ -66,53 +66,33 @@ int v=0;
         
         if (dastorat[0]=='E'&&dastorat[3]=='T')
         {
-            for (int i = 0; i < 4; i++)
-            {
-                exit_asli[i] = dastorat[i];
-            }
+            dastorat[4] = ' ';
             
         }
         
         else if (dastorat[0]=='O'&&dastorat[5] =='T')
         {
-            for (int i = 0; i < 6; i++)
-            {
-                output[i] = dastorat[i];
-            }
+            dastorat[6] = ' ';
             
         }
         else if (dastorat[0]=='I'&&dastorat[4] =='T')
         {
-            for (int i = 0; i < 5; i++)
-            {
-                input[i] = dastorat[i];
-            }
+            dastorat[5] = ' ';
             
         }
         else if (dastorat[0]=='D'&&dastorat[10] =='F')
         {
             
-            for (int i = 0; i < 11; i++)
-            {
-                d_r_f[i] = dastorat[i];
-            }
-            // printf("%s",d_r_f);
-            d_r_f[11] = ' ';
+            dastorat[11] = ' ';
         }
         else if (dastorat[0]=='D'&&dastorat[8] =='S')
         {
-            for (int i = 0; i < 9; i++)
-            {
-                d_r[i] = dastorat[i];
-            }
+            dastorat[9] = ' ';
             
         }
         else if (dastorat[0]=='H'&&dastorat[3] =='P')
         {
-            for (int i = 0; i < 4; i++)
-            {
-                help[i] = dastorat[i];
-            }
+            dastorat[4] = ' ';
             
         }
         for (i = 0; dastorat[i] != ' '; i++)
@@ -212,67 +192,62 @@ int v=0;
             sscanf(dastorat, "SWP S%d, S%d", &x, &y);
             SWP(x, y);
         }
-        else if (strcmp(help, "HELP") == 0)
+        else if (strcmp(har_khat, "HELP") == 0)
         {
             
             HELP();
-            for (int w = 0; w < 4; w++)
-            {
-                
-                help[w] = help_r[w];
-            }
+            
             
         }
-        else if (strcmp(d_r, "DUMP_REGS") == 0)
+        else if (strcmp(har_khat, "DUMP_REGS") == 0)
         {
             // printf("dump_regs");
             DUMP_REGS();
-            for (int w = 0; w < 9; w++)
-            {
-                
-                d_r[w] = d_r_r[w];
-            }
             
         }
 
-        else if (strcmp(d_r_f,"DUMP_REGS_F ") == 0)
+        else if (strcmp(har_khat,"DUMP_REGS_F ") == 0)
         {   
             // printf("dump_regs_f");
 
             DUMP_REGS_F();
-        for (int w = 0; w < 11; w++)
-            {
-                d_r_f[w] = d_r_f_r[w];
-            }
+        
             
             
         }
-        else if (strcmp(input, "INPUT") == 0)
+        else if (strcmp(har_khat, "INPUT") == 0)
         {
         // printf("input");
         INPUT();
          
-        for (int w = 0; w < 5; w++)
-            {
-                input[w] = input_r[w];
-            }
+    
         }
-        else if (strcmp(output, "OUTPUT") == 0)
+        else if (strcmp(har_khat, "OUTPUT") == 0)
         {
             // printf("output");
             OUTPUT();
-            for (int w = 0; w < 6; w++)
-            {
-                output[w] = output_r[w];
-            }
-            
-            }
-        else if (strcmp(har_khat, "MULL") == 0)
+        }   
+            else if (strcmp(har_khat, "MULL") == 0)
         {
 
             sscanf(dastorat, "MULL S%d, S%d", &x, &y);
             MULL(x, y);
         } 
+        else if (strcmp(har_khat, "POP") == 0)
+        {
+            
+            sscanf(dastorat, "POP S%d", &x);
+            POP(x);
+        }
+        else if (strcmp(har_khat, "PUSH") == 0)
+        {
+            
+            sscanf(dastorat, "PUSH S%d", &x);
+            PUSH(x);
+        }
+            
+            
+        
         else if (strcmp(har_khat, "JMP") == 0)
         {
 
@@ -281,12 +256,9 @@ int v=0;
             JMP(x,file_name);
             return 0;
         }
-        else if (strcmp(exit_asli, "EXIT") == 0)
+        else if (strcmp(har_khat, "EXIT") == 0)
         { 
-            for (int i = 0; i < 4; i++)
-            {
-                exit_asli[i] = exit_r[i];
-            }
+            
             
             break;
         }
@@ -469,54 +441,39 @@ void JMP(int line,char file[100])
          d++;
         if (d > line)
         {
-            if (dastorat[0]=='E'&&dastorat[3]=='T')
+        for (int i = 0; i < 100; i++)
         {
-            for (int i = 0; i < 4; i++)
-            {
-                exit_asli[i] = dastorat[i];
-            }
+            dastorat[i] = toupper(dastorat[i]);
+        }
+        
+        if (dastorat[0]=='E'&&dastorat[3]=='T')
+        {
+            dastorat[4] = ' ';
             
         }        
     else if (dastorat[0]=='O'&&dastorat[5] =='T')
         {
-            for (int i = 0; i < 6; i++)
-            {
-                output[i] = dastorat[i];
-            }
+            dastorat[6] = ' ';
             
         }
         else if (dastorat[0]=='I'&&dastorat[5] =='T')
         {
-            for (int i = 0; i < 6; i++)
-            {
-                input[i] = dastorat[i];
-            }
+           dastorat[6] = ' ';
             
         }
         else if (dastorat[0]=='D'&&dastorat[10] =='F')
         {
             
-            for (int i = 0; i < 11; i++)
-            {
-                d_r_f[i] = dastorat[i];
-            }
-            // printf("%s",d_r_f);
-            d_r_f[11] = ' ';
+            dastorat[11] = ' ';
         }
         else if (dastorat[0]=='D'&&dastorat[8] =='S')
         {
-            for (int i = 0; i < 9; i++)
-            {
-                d_r[i] = dastorat[i];
-            }
+        dastorat[9] = ' ';
             
         }
         else if (dastorat[0]=='H'&&dastorat[3] =='P')
         {
-            for (int i = 0; i < 4; i++)
-            {
-                help[i] = dastorat[i];
-            }
+            dastorat[4] = ' ';
             
         }
         for (i = 0; dastorat[i] != ' '; i++)
@@ -616,81 +573,68 @@ void JMP(int line,char file[100])
             sscanf(dastorat, "SWP S%d, S%d", &x, &y);
             SWP(x, y);
         }
-        else if (strcmp(d_r, "DUMP_REGS") == 0)
+        else if (strcmp(har_khat, "DUMP_REGS") == 0)
         {
             // printf("dump_regs");
             DUMP_REGS();
-            for (int w = 0; w < 9; w++)
-            {
-                
-                d_r[w] = d_r_r[w];
-            }
+            
             
         }
 
-        else if (strcmp(d_r_f,"DUMP_REGS_F ") == 0)
+        else if (strcmp(har_khat,"DUMP_REGS_F ") == 0)
         {   
             // printf("dump_regs_f");
 
             DUMP_REGS_F();
-        for (int w = 0; w < 11; w++)
-            {
-                d_r_f[w] = d_r_f_r[w];
-            }
+        
             
             
         }
-        else if (strcmp(input,"INPUT") == 0)
+        else if (strcmp(har_khat,"INPUT") == 0)
         {
         
         INPUT();
          
-        for (int w = 0; w < 5; w++)
-            {
-                input[w] = input_r[w];
-            }
+      
         }
-        else if (strcmp(help, "HELP") == 0)
+        else if (strcmp(har_khat, "HELP") == 0)
         {
             
             HELP();
-            for (int w = 0; w < 4; w++)
-            {
-                
-                help[w] = help_r[w];
-            }
+           
             
         }
-        else if (strcmp(output, "OUTPUT") == 0)
+        else if (strcmp(har_khat, "OUTPUT") == 0)
         {
             // printf("output");
             OUTPUT();
-            for (int w = 0; w < 6; w++)
-            {
-                output[w] = output_r[w];
-            }
+            
             
             
             
         }
-        else if (strcmp(har_khat, "MULL") == 0)
+        
+        else if (strcmp(har_khat, "POP") == 0)
         {
-
-            sscanf(dastorat, "MULL S%d, S%d", &x, &y);
-            MULL(x, y);
+            
+            sscanf(dastorat, "POP S%d", &x);
+            POP(x);
+        }
+        else if (strcmp(har_khat, "PUSH") == 0)
+        {
+            
+            sscanf(dastorat, "PUSH S%d", &x);
+            PUSH(x);
         }
         else if (strcmp(har_khat, "JMP") == 0)
         {
 
-            printf("\nyou ran into an unlimited loop pls try agian");
+            printf("\nyou ran into an infinity loop pls try agian");
             return ;
         }
-        else if (strcmp(exit_asli, "EXIT") == 0)
+        else if (strcmp(har_khat, "EXIT") == 0)
         {  
-            for (int i = 0; i < 4; i++)
-            {
-                exit_asli[i] = exit_r[i];
-            }
+            
             
 
             break;
@@ -700,6 +644,12 @@ void JMP(int line,char file[100])
 
             sscanf(dastorat, "DIV S%d, S%d", &x, &y);
             DIV(x, y);
+        }
+        else if (strcmp(har_khat,"MULL") == 0)
+        {
+
+            sscanf(dastorat, "MULL S%d, S%d", &x, &y);
+            MULL(x, y);
         }
         else
         {
@@ -743,7 +693,6 @@ printf("EXIT : kharaj shodan az dastorha va exit shodan az terminal\n");
 void DIV(int x,int y){
 main_array[x] =main_array[x]/main_array[y];
 main_array[y] = main_array[x]%main_array[y];
-// check_binary_addad()
 // printf("%d %d",main_array[x],main_array[y]);
 check_binary_addad(main_array[x]);
 check_andaze_javab(main_array[x]);
@@ -864,4 +813,29 @@ void overflow_SUB(int x, int y, int z)
     {
         meghdar_sabet[5] = 0;
     }
+}
+void PUSH(int x){
+if (makan_stack<5)
+{
+stack[makan_stack] = main_array[x];
+main_array[x] = 0;
+makan_stack++; 
+}
+else{
+    printf("\nan error has occurred :\n the memory in full and its ready to overflow please pop some information first");
+}    
+
+}
+void POP(int x){
+if (makan_stack>0)
+{
+    main_array[x] = stack[makan_stack];
+    stack[makan_stack] = 0;
+    makan_stack--;
+}
+else{
+    printf("\nan error has occurred :\n the memory in empty please push some information first");
+}
+
+
 }
