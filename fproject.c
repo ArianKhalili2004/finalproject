@@ -2,9 +2,9 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
-int i = 0, main_array[32], count_2 = -1,makan_stack=0;
+#include <math.h>
+int i = 0, main_array[32], count_2 = -1,makan_stack=0,stack[4];
 char dastorat[100], har_khat[100], meghdar_sabet[8],dastorat_2[100];
-int stack[4];
 void HELP();
 void ADD(int, int, int);
 void SUB(int, int, int);
@@ -31,6 +31,9 @@ void overflow_SUB(int, int, int);
 void DIV(int ,int);
 void POP(int);
 void PUSH(int);
+void MUL(int,int,int);
+void power(int,int,int);
+void SQRT(int,int);
 FILE *stream;
 int main()
 {
@@ -255,6 +258,7 @@ int makan_slash;
             sscanf(dastorat, "POP S%d", &x);
             POP(x);
         }
+        
         else if (strcmp(har_khat, "PUSH") == 0)
         {
             
@@ -272,11 +276,23 @@ int makan_slash;
             JMP(x,file_name);
             return 0;
         }
-        else if (strcmp(har_khat, "EXIT") == 0)
-        { 
-            
-            
-            break;
+        else if (strcmp(har_khat, "MUL") == 0)
+        {
+
+            sscanf(dastorat, "MUL S%d, S%d, S%d", &x, &y, &z);
+            MUL(x, y, z);
+        }
+        else if (strcmp(har_khat, "POW") == 0)
+        {
+
+            sscanf(dastorat, "POW S%d, S%d, S%d", &x, &y, &z);
+            power(x, y, z);
+        }
+        else if (strcmp(har_khat, "SQRT") == 0)
+        {
+
+            sscanf(dastorat, "SQRT S%d, S%d", &x, &y);
+            SQRT(x, y);
         }
         else if (strcmp(har_khat, "DIV") == 0)
         {
@@ -284,6 +300,13 @@ int makan_slash;
             sscanf(dastorat, "DIV S%d, S%d", &x, &y);
             DIV(x, y);
         }
+        else if (strcmp(har_khat, "EXIT") == 0)
+        { 
+            
+            
+            break;
+        }
+
         else
         {
             printf("\n%s is not recognized as an internal or external command,operable program or batch file."
@@ -402,7 +425,6 @@ void INPUT()
 {   scanf("%d",&main_array[0]);
     // (:      ):      |:
 }
-
 void OUTPUT()
 {
     printf("\narray_sobat_omomi_aval:%ld", main_array[0]);
@@ -444,7 +466,6 @@ void ORI(int x, int y, int z)
     check_binary_addad(main_array[x]);
     check_andaze_javab(main_array[x]);
 }
-
 void JMP(int line,char file[100])
 { 
     int d = 0, x, y, z, count_1 = 0, count = 0;
@@ -685,6 +706,24 @@ void JMP(int line,char file[100])
             sscanf(dastorat, "MULL S%d, S%d", &x, &y);
             MULL(x, y);
         }
+        else if (strcmp(har_khat, "MUL") == 0)
+        {
+
+            sscanf(dastorat, "MUL S%d, S%d, S%d", &x, &y, &z);
+            MUL(x, y, z);
+        }
+        else if (strcmp(har_khat, "POW") == 0)
+        {
+
+            sscanf(dastorat, "POW S%d, S%d, S%d", &x, &y, &z);
+            power(x, y, z);
+        }
+        else if (strcmp(har_khat, "SQRT") == 0)
+        {
+
+            sscanf(dastorat, "SQRT S%d, S%d", &x, &y);
+            SQRT(x, y);
+        }
         else
         {
             printf("\n%s is not recognized as an internal or external command,operable program or batch file."
@@ -701,9 +740,8 @@ void JMP(int line,char file[100])
     fclose(jump);
 
 }
-
 void HELP(){
-printf("Add : jamm kardan 2 adadi ke type shode ast ke an 2 addad ra dar araye asli mizarim va jamm mikonim\nva rikhtan on dar araye asli entekhabi\n");
+printf("\nAdd : jamm kardan 2 adadi ke type shode ast ke an 2 addad ra dar araye asli mizarim va jamm mikonim\nva rikhtan on dar araye asli entekhabi\n");
 printf("Sub :  kamm kardan 2 adadi ke type shode ast ke an 2 addad ra dar araye asli mizarim va kamm mikonim\nva rikhtan on dar araye asli entekhabi\n");
 printf("Addi : jamm kardan 2 adadi ke type shode ast va rikhtan on dar araye asli entekhabi\n");
 printf("Subi : jamm kardan 2 adadi ke type shode ast va rikhtan on dar araye asli entekhabi\n");
@@ -724,6 +762,12 @@ printf("DIV : taghsim krdan addad dovomi bar avali va rikhtan baghimande on dar 
 printf("MULL : zarb kardan 2 addad dar ham va kam kardan 4 byte az javab va rikhtan on dar yeki va 4 byte\n ezafe kardan va rikhtan on dar addad avali\n");
 printf("PUSH: Add the number you give the terminal to memory in stack\n");
 printf("POP: Remove the number  from stack and memory and add to array asli\n");
+printf("MUL: zarb kardan 2 addad dade shode dar ham bad peida karan loc \nanha dar array asli va rikhtan on dar makan addad aval dar array asli\n");
+printf("POW:  be tawan resondan 2 addad dade shode dar ham bad peida karan loc \nanha dar array asli va rikhtan on dar makan addad aval dar array asli\n");
+printf("SQRT:   radical gereftan az addad dade shode bad az inke peida karan loc \nan dar array asli va rikhtan on dar makan addad aval dar array asli\n");
+printf("MULI: zarb kardan 2 addad dar ham va rikhtan an dar loc addad avli dar array asli\n");
+printf("POWI: be tawan resondan 2 addad dar ham va rikhtan an dar loc addad avli dar array asli\n");
+printf("SQRTI:radical gereftan az addad dade shodeva rikhtan an dar loc addad avli dar array asli\n");
 printf("EXIT : kharaj shodan az dastorha va exit shodan az terminal\n");
 }
 void DIV(int x,int y){
@@ -872,4 +916,19 @@ if (makan_stack>0)
 else{
     printf("\nan error has occurred :\n the memory in empty please push some information first");
 }
+}
+void MUL(int x,int y,int z){
+main_array[x] = main_array[y] * main_array[z];
+check_binary_addad(main_array[x]);
+check_andaze_javab(main_array[x]);
+}
+void power(int x,int y,int z){
+main_array[x] = pow(main_array[x],main_array[z]);
+check_binary_addad(main_array[x]);
+check_andaze_javab(main_array[x]);
+}
+void SQRT(int x,int y){
+main_array[x] = sqrt(main_array[y]);
+check_binary_addad(main_array[x]);
+check_andaze_javab(main_array[x]);
 }
