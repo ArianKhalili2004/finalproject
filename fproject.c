@@ -34,6 +34,9 @@ void PUSH(int);
 void MUL(int,int,int);
 void power(int,int,int);
 void SQRT(int,int);
+void MULI(int,int,int);
+void POWI(int,int,int);
+void SQRTI(int,int);
 FILE *stream;
 int main()
 {
@@ -174,7 +177,7 @@ int makan_slash;
         {
 
             sscanf(dastorat, "ORI S%d, S%d, %d", &x, &y, &z);
-            XORI(x, y, z);
+            ORI(x, y, z);
         }
         else if (strcmp(har_khat, "ANDI") == 0)
         {
@@ -294,12 +297,31 @@ int makan_slash;
             sscanf(dastorat, "SQRT S%d, S%d", &x, &y);
             SQRT(x, y);
         }
+         else if (strcmp(har_khat, "MULI") == 0)
+        {
+
+            sscanf(dastorat, "MULI S%d, S%d, %d", &x, &y, &z);
+            MULI(x, y, z);
+        }
+         else if (strcmp(har_khat, "POWI") == 0)
+        {
+
+            sscanf(dastorat, "POWI S%d, S%d, %d", &x, &y, &z);
+            POWI(x, y, z);
+        }
+         else if (strcmp(har_khat, "SQRTI") == 0)
+        {
+
+            sscanf(dastorat, "SQRTI S%d, %d", &x, &y);
+            SQRTI(x, y);
+        }
         else if (strcmp(har_khat, "DIV") == 0)
         {
 
             sscanf(dastorat, "DIV S%d, S%d", &x, &y);
             DIV(x, y);
         }
+        
         else if (strcmp(har_khat, "EXIT") == 0)
         { 
             
@@ -591,7 +613,7 @@ void JMP(int line,char file[100])
         {
 
             sscanf(dastorat, "ORI S%d, S%d, %d", &x, &y, &z);
-            XORI(x, y, z);
+            ORI(x, y, z);
         }
         else if (strcmp(har_khat, "ANDI") == 0)
         {
@@ -684,7 +706,7 @@ void JMP(int line,char file[100])
         else if (strcmp(har_khat, "JMP") == 0)
         {
 
-            printf("\nyou ran into an infinity loop pls try agian");
+            printf("\nyou ran into an infinity loop please try agian");
             return ;
         }
         else if (strcmp(har_khat, "EXIT") == 0)
@@ -723,6 +745,24 @@ void JMP(int line,char file[100])
 
             sscanf(dastorat, "SQRT S%d, S%d", &x, &y);
             SQRT(x, y);
+        }
+         else if (strcmp(har_khat, "MULI") == 0)
+        {
+
+            sscanf(dastorat, "MULI S%d, S%d, %d", &x, &y, &z);
+            MULI(x, y, z);
+        }
+         else if (strcmp(har_khat, "POWI") == 0)
+        {
+
+            sscanf(dastorat, "POWI S%d, S%d, %d", &x, &y, &z);
+            POWI(x, y, z);
+        }
+         else if (strcmp(har_khat, "SQRTI") == 0)
+        {
+
+            sscanf(dastorat, "SQRTI S%d, %d", &x, &y);
+            SQRTI(x, y);
         }
         else
         {
@@ -929,6 +969,21 @@ check_andaze_javab(main_array[x]);
 }
 void SQRT(int x,int y){
 main_array[x] = sqrt(main_array[y]);
+check_binary_addad(main_array[x]);
+check_andaze_javab(main_array[x]);
+}
+void MULI(int x,int y,int z){
+main_array[x] = main_array[y] * main_array[z];
+check_binary_addad(main_array[x]);
+check_andaze_javab(main_array[x]);
+}
+void POWI(int x,int y,int z){
+main_array[x] = pow(main_array[y],z);
+check_binary_addad(main_array[x]);
+check_andaze_javab(main_array[x]);
+}
+void SQRTI(int x,int y){
+main_array[x] = sqrt(y);
 check_binary_addad(main_array[x]);
 check_andaze_javab(main_array[x]);
 }
