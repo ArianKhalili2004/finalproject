@@ -38,14 +38,11 @@ void MULI(int,int,int);
 void POWI(int,int,int);
 void SQRTI(int,int);
 FILE *stream;
-int main()
+int main(int argc,char* argv[])
 {
 
-char file_name[100];
-for (int i = 0; i < 100; i++)
-{
-    file_name[i] = ' ';
-}
+char file_name[25];
+strcpy(file_name,argv[1]);
 
 // scanf("%d",file_name);
 int count = 0, count_1 = 0, x, y, z;
@@ -56,7 +53,7 @@ int count = 0, count_1 = 0, x, y, z;
 // }
 int counting_slash=0;
 int makan_slash;
-    scanf("%s",file_name);
+    
     FILE *stream = fopen(file_name, "r");
     while (EOF != fscanf(stream, "%[^\n]\n", dastorat))
     {
@@ -331,8 +328,10 @@ int makan_slash;
 
         else
         {
+            printf("\033[0;31m");
             printf("\n%s is not recognized as an internal or external command,operable program or batch file."
             , har_khat);
+            printf("\033[0m");
         }
         for (int i = 0; i < 100; i++)
         {
@@ -392,18 +391,21 @@ void SWP(int x, int y)
     main_array[y] = c;
 }
 void DUMP_REGS()
-{
+{ 
+    
     for (int i = 0; i < 32; i++)
     {
         if (i == 0)
         {
             printf("\n");
+            printf("\033[0:34m");
             printf("sobat_omomi:");
         }
         printf(" %d:%d ", i,main_array[i]);
         if (i == 31)
         {
             printf("\n");
+            printf("\033[0:34m");
             printf("sobat_vaziat:");
         }
     }
@@ -498,7 +500,7 @@ void JMP(int line,char file[100])
     int makan_slash,counting_slash=0;
     while (EOF != fscanf(jump, "%[^\n]\n", dastorat))
     {  
-         d++;
+        d++;
         if (d > line)
         {
         for (int i = 0; i < 100; i++)
@@ -705,8 +707,9 @@ void JMP(int line,char file[100])
         }
         else if (strcmp(har_khat, "JMP") == 0)
         {
-
+             printf("\033[0;31m");
             printf("\nyou ran into an infinity loop please try agian");
+            printf("\033[0m");
             return ;
         }
         else if (strcmp(har_khat, "EXIT") == 0)
@@ -766,8 +769,10 @@ void JMP(int line,char file[100])
         }
         else
         {
+            printf("\033[0;31m");
             printf("\n%s is not recognized as an internal or external command,operable program or batch file."
             , har_khat);
+            printf("\033[0m");
         }
         for (int i = 0; i < 100; i++)
         {
