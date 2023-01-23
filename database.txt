@@ -1,0 +1,20 @@
+MOV S1, 5
+MOV S0, 4
+add S2, S1, S0
+MOV S3, S2
+MOV S5, S3
+SUB S4, S5, S2
+OUTPUT//dsadsdsadsadsdsdsadsd
+DUMP_REGS
+DUMP_REGS_F
+JMP 12
+ADD S8, S1, S4
+DUMP_REGS
+OUTPUT
+muli s9, s0, s5 
+mul  s10, s2, S1
+pow  s8, s2, s6
+powi s7, s5, s2
+DUMP_REGS
+EXIT
+
