@@ -1,0 +1,11 @@
+mov s0, 4
+mov s1, 5
+add s2, s1, s0
+sub s3, s1, S0
+and s4, s1, s0
+xor s5, s1, s0
+or s6, s1, s0
+andi s7, s1, 3
+swp s7, s6
+DUMP_REGS
+EXIT
