@@ -864,7 +864,7 @@ void JMP(int line, char file[100])
                 sscanf(dastorat, "ANDI S%d, S%d, %d", &x, &y, &z);
                 if (13 <= strlen(dastorat) && 0 <= x <= 32 && 0 <= y <= 32)
                 {
-                    SUBI(x, y, z);
+                    ANDI(x, y, z);
                 }
                 else
                 {
