@@ -1,0 +1,16 @@
+mov s1, 4
+mov s0, 7
+add s3, s0, s1
+mov s5, s3
+mov s8, 9
+sub s4, s8, s1
+OUTPUT
+push s6
+DUMP_REGS
+DUMP_REGS_F//neshon dadan array asli va vaziat dar file regs.txt
+addi s10, s4, 6
+jmp 14
+add s0, s6, s4
+pow s11, s1, S3
+help
+EXIT
