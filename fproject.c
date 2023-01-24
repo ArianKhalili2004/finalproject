@@ -124,63 +124,144 @@ int makan_slash;
         {
 
             sscanf(dastorat, "ADD S%d, S%d, S%d", &x, &y, &z);
-            ADD(x, y, z);
+            if (13<=strlen(dastorat)<=16&&0<=x<=32&&0<=y<=32&&0<=z<=32)
+            {
+                ADD(x, y, z);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
+            
         }
         else if (strcmp(har_khat, "SUB") == 0)
         {
             
             sscanf(dastorat, "SUB S%d, S%d, S%d", &x, &y, &z);
-            SUB(x, y, z);
+            if (13<=strlen(dastorat)<=16&&0<=x<=32&&0<=y<=32&&0<=z<=32)
+            {
+                SUB(x, y, z);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
 
         else if (strcmp(har_khat, "AND") == 0)
         {
 
             sscanf(dastorat, "AND S%d, S%d, S%d", &x, &y, &z);
-            AND(x, y, z);
+        if (13<=strlen(dastorat)<=16&&0<=x<=32&&0<=y<=32&&0<=z<=32)
+            {
+                AND(x, y, z);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
         else if (strcmp(har_khat, "XOR") == 0)
         {
 
             sscanf(dastorat, "XOR S%d, S%d, S%d", &x, &y, &z);
-            XOR(x, y, z);
+        if (13<=strlen(dastorat)<=16&&0<=x<=32&&0<=y<=32&&0<=z<=32)
+            {
+                XOR(x, y, z);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
         else if (strcmp(har_khat, "OR") == 0)
         {
 
             sscanf(dastorat, "OR S%d, S%d, S%d", &x, &y, &z);
-            OR(x, y, z);
+        if (12<=strlen(dastorat)<=15&&0<=x<=32&&0<=y<=32&&0<=z<=32)
+            {
+                OR(x, y, z);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
         else if (strcmp(har_khat, "ADDI") == 0)
         {
 
             sscanf(dastorat, "ADDI S%d, S%d, %d", &x, &y, &z);
-            ADDI(x, y, z);
+            if (13<=strlen(dastorat)&&0<=x<=32&&0<=y<=32)
+            {
+                ADDI(x, y, z);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
 
         else if (strcmp(har_khat, "SUBI") == 0)
         {
 
             sscanf(dastorat, "SUBI S%d, S%d, %d", &x, &y, &z);
-            SUBI(x, y, z);
+            if (13<=strlen(dastorat)&&0<=x<=32&&0<=y<=32)
+            {
+                SUBI(x, y, z);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
         else if (strcmp(har_khat, "XORI") == 0)
         {
 
             sscanf(dastorat, "XORI S%d, S%d, %d", &x, &y, &z);
-            XORI(x, y, z);
+            if (13<=strlen(dastorat)&&0<=x<=32&&0<=y<=32)
+            {
+                XORI(x, y, z);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
         else if (strcmp(har_khat, "ORI") == 0)
         {
 
             sscanf(dastorat, "ORI S%d, S%d, %d", &x, &y, &z);
-            ORI(x, y, z);
+            if (12<=strlen(dastorat)&&0<=x<=32&&0<=y<=32)
+            {
+                ORI(x, y, z);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
         else if (strcmp(har_khat, "ANDI") == 0)
         {
 
             sscanf(dastorat, "ANDI S%d, S%d, %d", &x, &y, &z);
-            ANDI(x, y, z);
+            if (13<=strlen(dastorat)&&0<=x<=32&&0<=y<=32)
+            {
+                SUBI(x, y, z);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
         else if (strcmp(har_khat, "MOV") == 0)
         {
@@ -209,7 +290,15 @@ int makan_slash;
         {
 
             sscanf(dastorat, "SWP S%d, S%d", &x, &y);
-            SWP(x, y);
+            if (9<=strlen(dastorat)<11&&0<=x<=32&&0<=y<=32)
+            {
+                SWP(x, y);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
         else if (strcmp(har_khat, "HELP") == 0)
         {
@@ -250,20 +339,44 @@ int makan_slash;
         {
 
             sscanf(dastorat, "MULL S%d, S%d", &x, &y);
-            MULL(x, y);
+            if (10<=strlen(dastorat)<=12&&0<=x<=32&&0<=y<=32)
+            {
+                MULL(x, y);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         } 
         else if (strcmp(har_khat, "POP") == 0)
         {
             
             sscanf(dastorat, "POP S%d", &x);
-            POP(x);
+            if (13<=strlen(dastorat)<=14&&0<=x<=32)
+            {
+                POP(x);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
         
         else if (strcmp(har_khat, "PUSH") == 0)
         {
             
             sscanf(dastorat, "PUSH S%d", &x);
-            PUSH(x);
+            if (14<=strlen(dastorat)<=15&&0<=x<=32)
+            {
+                PUSH(x);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
             
             
@@ -280,43 +393,99 @@ int makan_slash;
         {
 
             sscanf(dastorat, "MUL S%d, S%d, S%d", &x, &y, &z);
-            MUL(x, y, z);
+        if (13<=strlen(dastorat)<=16&&0<=x<=32&&0<=y<=32&&0<=z<=32)
+            {
+                MUL(x,y,z);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
         else if (strcmp(har_khat, "POW") == 0)
         {
 
             sscanf(dastorat, "POW S%d, S%d, S%d", &x, &y, &z);
-            power(x, y, z);
+            if (13<=strlen(dastorat)<=16&&0<=x<=32&&0<=y<=32&&0<=z<=32)
+            {
+                power(x,y,z);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
         else if (strcmp(har_khat, "SQRT") == 0)
         {
 
             sscanf(dastorat, "SQRT S%d, S%d", &x, &y);
-            SQRT(x, y);
+            if (10<=strlen(dastorat)<=12&&0<=x<=32&&0<=y<=32)
+            {
+                SQRT(x,y);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
          else if (strcmp(har_khat, "MULI") == 0)
         {
 
             sscanf(dastorat, "MULI S%d, S%d, %d", &x, &y, &z);
-            MULI(x, y, z);
+            if (13<=strlen(dastorat)&&0<=x<=32&&0<=y<=32)
+            {
+                MULI(x,y,z);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
          else if (strcmp(har_khat, "POWI") == 0)
         {
 
             sscanf(dastorat, "POWI S%d, S%d, %d", &x, &y, &z);
-            POWI(x, y, z);
+            if (13<=strlen(dastorat)&&0<=x<=32&&0<=y<=32)
+            {
+                POWI(x,y,z);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
          else if (strcmp(har_khat, "SQRTI") == 0)
         {
 
             sscanf(dastorat, "SQRTI S%d, %d", &x, &y);
-            SQRTI(x, y);
+            if (10<=strlen(dastorat)&&0<=x<=32)
+            {
+                SQRTI(x,y);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
         else if (strcmp(har_khat, "DIV") == 0)
         {
 
             sscanf(dastorat, "DIV S%d, S%d", &x, &y);
-            DIV(x, y);
+            if (9<=strlen(dastorat)<=9&&0<=x<=32&&0<=y<=32)
+            {
+                DIV(x,y);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
         
         else if (strcmp(har_khat, "EXIT") == 0)
@@ -503,11 +672,7 @@ void JMP(int line,char file[100])
         d++;
         if (d > line)
         {
-        for (int i = 0; i < 100; i++)
-        {
-            dastorat[i] = toupper(dastorat[i]);
-        }
-        for (int i = 0; i < 100; i++)
+for (int i = 0; i < 100; i++)
         {
             if (dastorat[i]=='/'&&dastorat[i+1]=='/')
             {
@@ -516,7 +681,8 @@ void JMP(int line,char file[100])
                 break;
             }
         }
-                if (counting_slash==1)
+
+        if (counting_slash==1)
         {
         for (int i = 100; i >= makan_slash; i--)
         {
@@ -525,19 +691,26 @@ void JMP(int line,char file[100])
         
         counting_slash=0;
         }
+        
+        for (int i = 0; i < 100; i++)
+        {
+            dastorat[i] = toupper(dastorat[i]);
+        }
+        
         if (dastorat[0]=='E'&&dastorat[3]=='T')
         {
             dastorat[4] = ' ';
             
-        }        
-    else if (dastorat[0]=='O'&&dastorat[5] =='T')
+        }
+        
+        else if (dastorat[0]=='O'&&dastorat[5] =='T')
         {
             dastorat[6] = ' ';
             
         }
-        else if (dastorat[0]=='I'&&dastorat[5] =='T')
+        else if (dastorat[0]=='I'&&dastorat[4] =='T')
         {
-           dastorat[6] = ' ';
+            dastorat[5] = ' ';
             
         }
         else if (dastorat[0]=='D'&&dastorat[10] =='F')
@@ -547,7 +720,7 @@ void JMP(int line,char file[100])
         }
         else if (dastorat[0]=='D'&&dastorat[8] =='S')
         {
-        dastorat[9] = ' ';
+            dastorat[9] = ' ';
             
         }
         else if (dastorat[0]=='H'&&dastorat[3] =='P')
@@ -565,63 +738,144 @@ void JMP(int line,char file[100])
         {
 
             sscanf(dastorat, "ADD S%d, S%d, S%d", &x, &y, &z);
-            ADD(x, y, z);
+            if (13<=strlen(dastorat)<=16&&0<=x<=32&&0<=y<=32&&0<=z<=32)
+            {
+                ADD(x, y, z);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
+            
         }
         else if (strcmp(har_khat, "SUB") == 0)
         {
             
             sscanf(dastorat, "SUB S%d, S%d, S%d", &x, &y, &z);
-            SUB(x, y, z);
+            if (13<=strlen(dastorat)<=16&&0<=x<=32&&0<=y<=32&&0<=z<=32)
+            {
+                SUB(x, y, z);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
 
         else if (strcmp(har_khat, "AND") == 0)
         {
 
             sscanf(dastorat, "AND S%d, S%d, S%d", &x, &y, &z);
-            AND(x, y, z);
+        if (13<=strlen(dastorat)<=16&&0<=x<=32&&0<=y<=32&&0<=z<=32)
+            {
+                AND(x, y, z);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
         else if (strcmp(har_khat, "XOR") == 0)
         {
 
             sscanf(dastorat, "XOR S%d, S%d, S%d", &x, &y, &z);
-            XOR(x, y, z);
+        if (13<=strlen(dastorat)<=16&&0<=x<=32&&0<=y<=32&&0<=z<=32)
+            {
+                XOR(x, y, z);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
         else if (strcmp(har_khat, "OR") == 0)
         {
 
             sscanf(dastorat, "OR S%d, S%d, S%d", &x, &y, &z);
-            OR(x, y, z);
+        if (12<=strlen(dastorat)<=15&&0<=x<=32&&0<=y<=32&&0<=z<=32)
+            {
+                OR(x, y, z);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
         else if (strcmp(har_khat, "ADDI") == 0)
         {
 
             sscanf(dastorat, "ADDI S%d, S%d, %d", &x, &y, &z);
-            ADDI(x, y, z);
+            if (13<=strlen(dastorat)&&0<=x<=32&&0<=y<=32)
+            {
+                ADDI(x, y, z);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
 
         else if (strcmp(har_khat, "SUBI") == 0)
         {
 
             sscanf(dastorat, "SUBI S%d, S%d, %d", &x, &y, &z);
-            SUBI(x, y, z);
+            if (13<=strlen(dastorat)&&0<=x<=32&&0<=y<=32)
+            {
+                SUBI(x, y, z);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
         else if (strcmp(har_khat, "XORI") == 0)
         {
 
             sscanf(dastorat, "XORI S%d, S%d, %d", &x, &y, &z);
-            XORI(x, y, z);
+            if (13<=strlen(dastorat)&&0<=x<=32&&0<=y<=32)
+            {
+                XORI(x, y, z);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
         else if (strcmp(har_khat, "ORI") == 0)
         {
 
             sscanf(dastorat, "ORI S%d, S%d, %d", &x, &y, &z);
-            ORI(x, y, z);
+            if (12<=strlen(dastorat)&&0<=x<=32&&0<=y<=32)
+            {
+                ORI(x, y, z);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
         else if (strcmp(har_khat, "ANDI") == 0)
         {
 
             sscanf(dastorat, "ANDI S%d, S%d, %d", &x, &y, &z);
-            ANDI(x, y, z);
+            if (13<=strlen(dastorat)&&0<=x<=32&&0<=y<=32)
+            {
+                SUBI(x, y, z);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
         else if (strcmp(har_khat, "MOV") == 0)
         {
@@ -650,13 +904,27 @@ void JMP(int line,char file[100])
         {
 
             sscanf(dastorat, "SWP S%d, S%d", &x, &y);
-            SWP(x, y);
+            if (9<=strlen(dastorat)<11&&0<=x<=32&&0<=y<=32)
+            {
+                SWP(x, y);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
+        }
+        else if (strcmp(har_khat, "HELP") == 0)
+        {
+            
+            HELP();
+            
+            
         }
         else if (strcmp(har_khat, "DUMP_REGS") == 0)
         {
             // printf("dump_regs");
             DUMP_REGS();
-            
             
         }
 
@@ -669,104 +937,176 @@ void JMP(int line,char file[100])
             
             
         }
-        else if (strcmp(har_khat,"INPUT") == 0)
+        else if (strcmp(har_khat, "INPUT") == 0)
         {
-        
+        // printf("input");
         INPUT();
          
-      
-        }
-        else if (strcmp(har_khat, "HELP") == 0)
-        {
-            
-            HELP();
-           
-            
+    
         }
         else if (strcmp(har_khat, "OUTPUT") == 0)
         {
             // printf("output");
             OUTPUT();
-            
-            
-            
-            
-        }
-        
+        }   
+            else if (strcmp(har_khat, "MULL") == 0)
+        {
+
+            sscanf(dastorat, "MULL S%d, S%d", &x, &y);
+            if (10<=strlen(dastorat)<=12&&0<=x<=32&&0<=y<=32)
+            {
+                MULL(x, y);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
+        } 
         else if (strcmp(har_khat, "POP") == 0)
         {
             
             sscanf(dastorat, "POP S%d", &x);
-            POP(x);
+            if (13<=strlen(dastorat)<=14&&0<=x<=32)
+            {
+                POP(x);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
+        
         else if (strcmp(har_khat, "PUSH") == 0)
         {
             
             sscanf(dastorat, "PUSH S%d", &x);
-            PUSH(x);
+            if (14<=strlen(dastorat)<=15&&0<=x<=32)
+            {
+                PUSH(x);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
+            
+            
+        
         else if (strcmp(har_khat, "JMP") == 0)
         {
-             printf("\033[0;31m");
-            printf("\nyou ran into an infinity loop please try agian");
-            printf("\033[0m");
+
+            printf("\nyou ran into an unlimited loop pls try agian");
             return ;
-        }
-        else if (strcmp(har_khat, "EXIT") == 0)
-        {  
-            
-            
-
-            break;
-        }
-        else if (strcmp(har_khat, "DIV") == 0)
-        {
-
-            sscanf(dastorat, "DIV S%d, S%d", &x, &y);
-            DIV(x, y);
-        }
-        else if (strcmp(har_khat,"MULL") == 0)
-        {
-
-            sscanf(dastorat, "MULL S%d, S%d", &x, &y);
-            MULL(x, y);
         }
         else if (strcmp(har_khat, "MUL") == 0)
         {
 
             sscanf(dastorat, "MUL S%d, S%d, S%d", &x, &y, &z);
-            MUL(x, y, z);
+        if (13<=strlen(dastorat)<=16&&0<=x<=32&&0<=y<=32&&0<=z<=32)
+            {
+                MUL(x,y,z);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
         else if (strcmp(har_khat, "POW") == 0)
         {
 
             sscanf(dastorat, "POW S%d, S%d, S%d", &x, &y, &z);
-            power(x, y, z);
+            if (13<=strlen(dastorat)<=16&&0<=x<=32&&0<=y<=32&&0<=z<=32)
+            {
+                power(x,y,z);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
         else if (strcmp(har_khat, "SQRT") == 0)
         {
 
             sscanf(dastorat, "SQRT S%d, S%d", &x, &y);
-            SQRT(x, y);
+            if (10<=strlen(dastorat)<=12&&0<=x<=32&&0<=y<=32)
+            {
+                SQRT(x,y);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
          else if (strcmp(har_khat, "MULI") == 0)
         {
 
             sscanf(dastorat, "MULI S%d, S%d, %d", &x, &y, &z);
-            MULI(x, y, z);
+            if (13<=strlen(dastorat)&&0<=x<=32&&0<=y<=32)
+            {
+                MULI(x,y,z);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
          else if (strcmp(har_khat, "POWI") == 0)
         {
 
             sscanf(dastorat, "POWI S%d, S%d, %d", &x, &y, &z);
-            POWI(x, y, z);
+            if (13<=strlen(dastorat)&&0<=x<=32&&0<=y<=32)
+            {
+                POWI(x,y,z);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
          else if (strcmp(har_khat, "SQRTI") == 0)
         {
 
             sscanf(dastorat, "SQRTI S%d, %d", &x, &y);
-            SQRTI(x, y);
+            if (10<=strlen(dastorat)&&0<=x<=32)
+            {
+                SQRTI(x,y);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
         }
+        else if (strcmp(har_khat, "DIV") == 0)
+        {
+
+            sscanf(dastorat, "DIV S%d, S%d", &x, &y);
+            if (9<=strlen(dastorat)<=9&&0<=x<=32&&0<=y<=32)
+            {
+                DIV(x,y);
+            }
+            else {
+                printf("\033[0;31m");
+                printf("Error in the variable has occoured but the command is right");
+                printf("\033[0m");
+            }
+        }
+        
+        else if (strcmp(har_khat, "EXIT") == 0)
+        { 
+            
+            
+            break;
+        }
+
         else
         {
             printf("\033[0;31m");
@@ -778,7 +1118,6 @@ void JMP(int line,char file[100])
         {
             har_khat[i] = dastorat_2[i];
         }
-        
        
     }
    }
