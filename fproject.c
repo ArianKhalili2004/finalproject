@@ -506,6 +506,11 @@ int main(int argc, char *argv[])
             }
         }
     }
+    if (charkhidan==0)
+    {
+        printf("this file did not exist");
+    }
+    
 }
 void ADD(int x, int y, int z)
 {
@@ -686,6 +691,7 @@ void HELP()
     printf("EXIT : kharaj shodan az dastorha va exit shodan az terminal\n");
 }
 void DIV(int x, int y)
+//DSDSDS
 {
     main_array[x] = main_array[x] / main_array[y];
     main_array[y] = main_array[x] % main_array[y];
